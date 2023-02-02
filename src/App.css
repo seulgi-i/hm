@@ -66,9 +66,7 @@
   justify-content: flex-end;
   margin: 20px;
 }
-.menuBar {
-  display: none;
-}
+
 @media screen and (max-width: 63rem) {
   .menu-list {
     display: none;
