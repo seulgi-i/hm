@@ -28,9 +28,11 @@ const ProductDetail = () => {
             사이즈
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">{product?.size[0]}</Dropdown.Item>
-            <Dropdown.Item href="#/action-1">{product?.size[1]}</Dropdown.Item>
-            <Dropdown.Item href="#/action-1">{product?.size[2]}</Dropdown.Item>
+            {product?.size.map((size) => (
+              <Dropdown.Item href="#/action-1">
+                {size}
+              </Dropdown.Item>
+            ))}
           </Dropdown.Menu>
         </Dropdown>
       </Col>

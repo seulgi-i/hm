@@ -1,11 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faMagnifyingGlass, faSearch } from '@fortawesome/free-solid-svg-icons';
-
-import React from 'react';
-import login from '../page/Login';
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 const Navbar = ({ authenticate, setAuthenticate }) => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const navigate = useNavigate();
 
   const navigateToLogin = () => {
@@ -39,10 +46,24 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
             {authenticate == true ? <button onClick={logOut}>로그아웃</button> :
               <button onClick={navigateToLogin}>로그인</button>
             }
-
           </div>
         </div>
-
+        <div className='hidden-menu'>
+          <FontAwesomeIcon icon={faBars} className="d-lg-none" onClick={handleShow} />
+          <Offcanvas show={show} onHide={handleClose} responsive="lg">
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title>
+              </Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <p className="mb-0">
+                <ul className='menuBar'>{menuList.map((menu, index) =>
+                  (<li key={index}>{menu}</li>)
+                )}</ul>
+              </p>
+            </Offcanvas.Body>
+          </Offcanvas>
+        </div>
       </div>
       <div className='nav-section'>
         <img width={100}
@@ -55,6 +76,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
           {menuList.map((menu, index) => (<li key={index}>{menu}</li>)
           )}
         </ul>
+
       </div>
       <div className='search-area'>
         <FontAwesomeIcon icon={faMagnifyingGlass} />
