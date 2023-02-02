@@ -54,17 +54,12 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
             <Offcanvas.Header closeButton>
               <Offcanvas.Title>
                 <div className='menuBar'>
-
                   {menuList.map((menu, index) =>
                     (<li key={index}>{menu}</li>)
                   )}
                 </div>
               </Offcanvas.Title>
             </Offcanvas.Header>
-
-            <Offcanvas.Body>
-
-            </Offcanvas.Body>
           </Offcanvas>
         </div>
       </div>
@@ -76,7 +71,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
       </div>
       <div className='menu-area'>
         <ul className='menu-list'>
-          {menuList.map((menu, index) => (<li key={index}>{menu}</li>)
+          {menuList.map((menu, index) => (<button key={index}>{menu}</button>)
           )}
         </ul>
 
