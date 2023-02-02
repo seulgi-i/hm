@@ -67,7 +67,8 @@
   margin: 20px;
 }
 .menuBar {
-  display: none;
+  display: hidden;
+  list-style-type: none;
 }
 @media screen and (max-width: 63rem) {
   .menu-list {

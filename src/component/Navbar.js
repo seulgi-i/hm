@@ -56,11 +56,12 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <p className="mb-0">
-                <ul className='menuBar'>{menuList.map((menu, index) =>
+
+              <ul className='menuBar'>
+                {menuList.map((menu, index) =>
                   (<li key={index}>{menu}</li>)
                 )}</ul>
-              </p>
+
             </Offcanvas.Body>
           </Offcanvas>
         </div>
