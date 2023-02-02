@@ -67,8 +67,7 @@
   margin: 20px;
 }
 .menuBar {
-  display: hidden;
-  list-style-type: none;
+  display: none;
 }
 @media screen and (max-width: 63rem) {
   .menu-list {
@@ -79,5 +78,9 @@
     list-style-type: none;
     margin-top: 10px;
     padding: 10px;
+  }
+  .offcanvas-title {
+    margin-bottom: -557px !important;
+    line-height: 2.5 !important;
   }
 }

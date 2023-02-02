@@ -53,14 +53,16 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
           <Offcanvas show={show} onHide={handleClose} responsive="lg">
             <Offcanvas.Header closeButton>
               <Offcanvas.Title>
+                <div className='menuBar'>
+
+                  {menuList.map((menu, index) =>
+                    (<li key={index}>{menu}</li>)
+                  )}
+                </div>
               </Offcanvas.Title>
             </Offcanvas.Header>
-            <Offcanvas.Body>
 
-              <ul className='menuBar'>
-                {menuList.map((menu, index) =>
-                  (<li key={index}>{menu}</li>)
-                )}</ul>
+            <Offcanvas.Body>
 
             </Offcanvas.Body>
           </Offcanvas>
