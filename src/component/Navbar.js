@@ -6,8 +6,10 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Navbar = ({ authenticate, setAuthenticate }) => {
+  const auth = useSelector(state => state.auth.authenticate)
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -43,7 +45,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
         <div className="login-button">
           <FontAwesomeIcon icon={faUser} />
           <div>
-            {authenticate == true ? <button onClick={logOut}>로그아웃</button> :
+            {auth == true ? <button onClick={logOut}>로그아웃</button> :
               <button onClick={navigateToLogin}>로그인</button>
             }
           </div>
@@ -78,7 +80,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
       </div>
       <div className='search-area'>
         <FontAwesomeIcon icon={faMagnifyingGlass} />
-        <input type='text' onKeyPress={(event) => search(event)}></input>
+        <input type='text' onKey Press={(event) => search(event)}></input>
       </div>
     </div >
   );

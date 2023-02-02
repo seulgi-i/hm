@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 const ProductDetail = () => {
-  let { id } = useParams();
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
   const getProductDetail = async () => {
     let url = `https://my-json-server.typicode.com/seulgi-i/hm/products/${id}`
