@@ -2,13 +2,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faMagnifyingGlass, faSearch } from '@fortawesome/free-solid-svg-icons';
-import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { authenciateAction } from '../redux/actions/authenciateAction';
 
-const Navbar = ({ authenticate, setAuthenticate }) => {
+const Navbar = () => {
+
+  const dispatch = useDispatch();
+  const logout = (event) => {
+    dispatch(authenciateAction.logout(false));
+    navigate("/");
+  }
   const auth = useSelector(state => state.auth.authenticate)
   const [show, setShow] = useState(false);
 
@@ -21,10 +27,6 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
     navigate("/login");
   }
 
-  const logOut = () => {
-    navigate("/login");
-    setAuthenticate(false);
-  }
   const home = () => {
     navigate("/");
   }
@@ -45,7 +47,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
         <div className="login-button">
           <FontAwesomeIcon icon={faUser} />
           <div>
-            {auth == true ? <button onClick={logOut}>로그아웃</button> :
+            {auth == true ? <button onClick={logout}>로그아웃</button> :
               <button onClick={navigateToLogin}>로그인</button>
             }
           </div>
@@ -80,7 +82,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
       </div>
       <div className='search-area'>
         <FontAwesomeIcon icon={faMagnifyingGlass} />
-        <input type='text' onKey Press={(event) => search(event)}></input>
+        <input type='text' onKeyPress={(event) => search(event)}></input>
       </div>
     </div >
   );

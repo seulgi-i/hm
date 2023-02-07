@@ -1,10 +1,12 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const [query, setQuery] = useSearchParams();
+
   const getProductDetail = async () => {
     let url = `https://my-json-server.typicode.com/seulgi-i/hm/products/${id}`
     let response = await fetch(url);
